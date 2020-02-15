@@ -17,7 +17,7 @@
 
     <div class="row mb-3">
         <div class="col-sm-6">
-            <form action="/auth" method="post">
+            <form action="/login" method="post">
 
                     <div class="form-group row">
                         <label  class="col-sm-2 col-form-label">Email</label>

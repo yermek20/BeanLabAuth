@@ -10,6 +10,11 @@ public class Users {
     public Users() {
     }
 
+    public Users(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public Users(Long id, String login, String password, String userFullName, int age) {
         this.id = id;
         this.login = login;
@@ -20,13 +25,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", userFullName='" + userFullName + '\'' +
-                ", age=" + age +
-                '}';
+        return userFullName + " " + age + " years old!" ;
     }
 
     public Long getId() {

@@ -27,20 +27,20 @@ public class DBManager {
     }
 
     public Users getUserByLoginAndPassword(String login, String password){
-        Users user = null;
+
+        ArrayList<Users> usersArrayList = new ArrayList<>();
 
         try {
-            PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM users WHERE login = ?, password = ? ");
-            statement.setString(1, login);
-            statement.setString(2, password);
+            PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM users ");
+
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                user = new Users(resultSet.getLong(0),
+            while (resultSet.next()) {
+                usersArrayList.add(new Users(resultSet.getLong("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
-                        resultSet.getString(null),
-                        resultSet.getInt(0)
-                );
+                        resultSet.getString("user_full_name"),
+                        resultSet.getInt("age")
+                ));
             }
 
             statement.close();
@@ -48,7 +48,12 @@ public class DBManager {
             var5.printStackTrace();
         }
 
-        return user;
+        for (Users u : usersArrayList){
+            if (u.getLogin().equals(login)&&u.getPassword().equals(password)){
+                return u;
+            }
+        }
+        return null;
     }
 
     public Users getUser(Long id) {

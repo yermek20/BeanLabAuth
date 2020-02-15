@@ -14,24 +14,18 @@
 </head>
 <body>
 <div class="container mt-5">
-    <a href="/listbook" class="btn btn-success">LIST BOOKS</a>
-    <a href="/addbook" class="btn btn-success">ADD BOOKS</a>
-    <p></p>
+
     <div class="row mb-3">
         <div class="col-sm-6">
-            <form action="/search" method="post">
-
+            <form action="/logout" method="post">
                 <div class="form-group">
                     <label>
-                        NAME:
+                        <h3>Welcome ${sessionScope.user}</h3>
                     </label>
-                    <input type="text" class="form-control" name = "name">
                 </div>
-
                 <div class="form-group">
-                    <button class="btn btn-success">SEARCH BOOK</button>
+                    <button class="btn btn-primary">LOGIN OUT</button>
                 </div>
-
             </form>
         </div>
     </div>
